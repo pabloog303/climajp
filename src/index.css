@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ── Weather Gradients ── */
+.weather-gradient-sunny {
+  background: linear-gradient(160deg, #1565c0 0%, #1e88e5 30%, #42a5f5 60%, #ffa726 85%, #ff7043 100%);
+}
+.weather-gradient-cloudy {
+  background: linear-gradient(160deg, #37474f 0%, #546e7a 40%, #78909c 80%, #90a4ae 100%);
+}
+.weather-gradient-rainy {
+  background: linear-gradient(160deg, #0d1b2a 0%, #1b2a4a 45%, #2d4373 80%, #3a5680 100%);
+}
+.weather-gradient-night {
+  background: linear-gradient(160deg, #050a17 0%, #0d1635 40%, #1a2151 70%, #0f2460 100%);
+}
+.weather-gradient-stormy {
+  background: linear-gradient(160deg, #090909 0%, #1a1a2e 40%, #2d2d44 70%, #3c3b52 100%);
+}
+.weather-gradient-snowy {
+  background: linear-gradient(160deg, #7ea8c9 0%, #a8c8e8 40%, #cfe0f0 70%, #e8f0f8 100%);
+}
+
+/* ── Glass morphism ── */
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.glass-dark {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Scrollbar ── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+/* ── GSAP pre-animation state ── */
+.gsap-init { opacity: 0; transform: translateY(24px); }
+
+/* ── Animations ── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes rain-drop {
+  from { transform: translateY(-10px); opacity: 0.9; }
+  to   { transform: translateY(100px); opacity: 0; }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.animate-float   { animation: float-y 3.5s ease-in-out infinite; }
+.animate-spin-slow { animation: spin-slow 8s linear infinite; }
+.animate-twinkle { animation: twinkle 2.5s ease-in-out infinite; }
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.06) 25%,
+    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.06) 75%
+  );
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
